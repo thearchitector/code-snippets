@@ -1,0 +1,33 @@
+image:
+  registry: docker.io
+  tag: 1.26.6
+
+replicas: 3
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
+
+service:
+  type: ClusterIP
+
+grpcService:
+  type: ClusterIP
+
+env:
+  ASYNC_INDEXING: "true"
+  AUTOSCHEMA_ENABLED: "false"
+  DISABLE_TELEMETRY: "true"
+  ENABLE_API_BASED_MODULES: "false"
+  GO_PROFILING_DISABLE: "true"
+
+default_vectorizer_module: text2vec-transformers
+modules:
+  # vectorization
+  text2vec-transformers:
+    enabled: true
+    registry: docker.io
+    repo: semitechnologies/transformers-inference
+    tag: sentence-transformers-all-MiniLM-L6-v2
+    envconfig:
+      enable_cuda: false
