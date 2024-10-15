@@ -9,9 +9,9 @@
   ```sh
   $ apt update && apt install vim -y
   $ pip install weaviate-client
-  $ vim test.py
-  # copy file contents
-  $ python test.py
+  $ vim repro.py
+  # copy repro file contents
+  $ python repro.py
   created: 200
   returned: 100
 ```
